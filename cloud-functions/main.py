@@ -6,12 +6,15 @@ from flask import abort
 
 from google.cloud import firestore
 
+import uuid
+
 import json
 import geojson
 from geojson.geometry import Point
 from geojson import Feature
 
 app = Flask(__name__)
+db = firestore.Client()
 
 @app.route('/', methods=['POST'])
 def main():
@@ -27,5 +30,6 @@ def putPointFeatureEndpoint( request:Request ):
     return "Gotty"
 
 def persistToFeatureBase ( feature:Feature ) :
-    print(feature)
+    feature_doc_ref = db.collection(u'poc_collection').document(str(uuid.uuid4()))
+    feature_doc_ref.set(feature)
     return
