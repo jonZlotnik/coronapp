@@ -3,6 +3,7 @@
 # Edit at https://www.gitignore.io/?templates=python,visualstudio,visualstudiocode
 
 ### Python ###
+venv/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
